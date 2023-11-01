@@ -16,21 +16,32 @@
   <meta name="author" content="Zhang HaoYu">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://example.com/tags/index.html">
+    <meta name="description" content="什么是闭包？闭包有什么缺陷？  定义： 一个方法能带上下文 缺陷：  加剧内存逃逸（分配到堆上，需要 GC，比较耗性能） 可读性比较差（因人而异）   什么情况下会出现栈溢出？  无限循环、递归调用…  什么是不定参数？调用方法的时候，不定参数可以传入 0 个值吗？方法内部怎么使用不定参数？  当成切片用  什么是 defer？  在程序返回前执行一段代码  一个方法内部的 defer 能不能超">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go基础回顾">
+<meta property="og:url" content="http://example.com/2023/10/31/Go%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/index.html">
 <meta property="og:site_name" content="Zhang HaoYu&#39;Blog">
+<meta property="og:description" content="什么是闭包？闭包有什么缺陷？  定义： 一个方法能带上下文 缺陷：  加剧内存逃逸（分配到堆上，需要 GC，比较耗性能） 可读性比较差（因人而异）   什么情况下会出现栈溢出？  无限循环、递归调用…  什么是不定参数？调用方法的时候，不定参数可以传入 0 个值吗？方法内部怎么使用不定参数？  当成切片用  什么是 defer？  在程序返回前执行一段代码  一个方法内部的 defer 能不能超">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-31T15:33:45.000Z">
+<meta property="article:modified_time" content="2023-11-01T04:11:07.275Z">
 <meta property="article:author" content="Zhang HaoYu">
+<meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>标签 - Zhang HaoYu&#39;Blog</title>
+  <title>Go基础回顾 - Zhang HaoYu&#39;Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -107,7 +118,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 80vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -225,17 +236,53 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="标签"></span>
+            <span id="subtitle" data-typed-text="Go基础回顾"></span>
           
         </div>
 
         
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-31 23:33" pubdate>
+          2023年10月31日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          565 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
 
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
       
     </div>
   </div>
@@ -247,24 +294,212 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="text-center tagcloud">
-  <a href="/tags/Go/" style="font-size: 15px; color: #bbe">Go</a>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Go基础回顾</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>什么是闭包？闭包有什么缺陷？</p>
+</blockquote>
+<p>定义：</p>
+<p>一个方法能带上下文</p>
+<p>缺陷：</p>
+<ul>
+<li>加剧内存逃逸（分配到堆上，需要 GC，比较耗性能）</li>
+<li>可读性比较差（因人而异）</li>
+</ul>
+<blockquote>
+<p>什么情况下会出现栈溢出？</p>
+</blockquote>
+<p>无限循环、递归调用…</p>
+<blockquote>
+<p>什么是不定参数？调用方法的时候，不定参数可以传入 0 个值吗？方法内部怎么使用不定参数？</p>
+</blockquote>
+<p>当成切片用</p>
+<blockquote>
+<p>什么是 defer？</p>
+</blockquote>
+<p>在程序返回前执行一段代码</p>
+<blockquote>
+<p>一个方法内部的 defer 能不能超过 8 个？</p>
+</blockquote>
+<p>可以。但是超过 8 个会换一种底层实现方式</p>
+<blockquote>
+<p>defer 内部能不能修改返回值？怎么改？</p>
+</blockquote>
+<p>能改，返回值是带名字的返回值，如果是局部变量不行</p>
+<blockquote>
+<p>数组和切片有什么区别？</p>
+</blockquote>
+<p>数组和别的语言一样，是一段固定长度的内存</p>
+<p>而切片能够看成是数组的二次封装，支持 append 等操作</p>
+<blockquote>
+<p>切片是怎么扩容的？</p>
+</blockquote>
+<p>重新分配一段连续的内存，而后把原本的数据拷贝过去</p>
+<ul>
+<li>当容量小于 256 的时候，两倍扩容（低版本是 1024 作为分界点）</li>
+<li>否则，按照 1.25 倍扩容</li>
+</ul>
+<blockquote>
+<p>defer 的实现机制？</p>
+</blockquote>
+<ul>
+<li>堆上分配：整个 defer 直接分配到堆上，缺点就是要被 GC 管理</li>
+<li>栈上分配：整个 defer 分配到了 goroutine 栈上，不需要被 GC 管理</li>
+<li>开放编码：启用内联的优化，你直观理解就是相对于把你的 defer 内容放到了你的函数最后。启用条件：<ul>
+<li>函数的 defer 数量少于或者等于 8 个</li>
+<li>函数的 defer 关键字不能在循环中执行</li>
+<li>函数的 return 语句与 defer 语句的乘积小于或者等于 15 个</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Go/" class="print-no-link">#Go</a>
+      
+    </div>
+  
 </div>
 
-              </div>
-            </div>
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Go基础回顾</div>
+      <div>http://example.com/2023/10/31/Go基础回顾/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zhang HaoYu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年10月31日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -369,6 +604,99 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 

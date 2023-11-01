@@ -3,5 +3,24 @@
   
   
   
+  <entry>
+    <title>Go基础回顾</title>
+    <link href="/2023/10/31/Go%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/"/>
+    <url>/2023/10/31/Go%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>什么是闭包？闭包有什么缺陷？</p></blockquote><p>定义：</p><p>一个方法能带上下文</p><p>缺陷：</p><ul><li>加剧内存逃逸（分配到堆上，需要 GC，比较耗性能）</li><li>可读性比较差（因人而异）</li></ul><blockquote><p>什么情况下会出现栈溢出？</p></blockquote><p>无限循环、递归调用…</p><blockquote><p>什么是不定参数？调用方法的时候，不定参数可以传入 0 个值吗？方法内部怎么使用不定参数？</p></blockquote><p>当成切片用</p><blockquote><p>什么是 defer？</p></blockquote><p>在程序返回前执行一段代码</p><blockquote><p>一个方法内部的 defer 能不能超过 8 个？</p></blockquote><p>可以。但是超过 8 个会换一种底层实现方式</p><blockquote><p>defer 内部能不能修改返回值？怎么改？</p></blockquote><p>能改，返回值是带名字的返回值，如果是局部变量不行</p><blockquote><p>数组和切片有什么区别？</p></blockquote><p>数组和别的语言一样，是一段固定长度的内存</p><p>而切片能够看成是数组的二次封装，支持 append 等操作</p><blockquote><p>切片是怎么扩容的？</p></blockquote><p>重新分配一段连续的内存，而后把原本的数据拷贝过去</p><ul><li>当容量小于 256 的时候，两倍扩容（低版本是 1024 作为分界点）</li><li>否则，按照 1.25 倍扩容</li></ul><blockquote><p>defer 的实现机制？</p></blockquote><ul><li>堆上分配：整个 defer 直接分配到堆上，缺点就是要被 GC 管理</li><li>栈上分配：整个 defer 分配到了 goroutine 栈上，不需要被 GC 管理</li><li>开放编码：启用内联的优化，你直观理解就是相对于把你的 defer 内容放到了你的函数最后。启用条件：<ul><li>函数的 defer 数量少于或者等于 8 个</li><li>函数的 defer 关键字不能在循环中执行</li><li>函数的 return 语句与 defer 语句的乘积小于或者等于 15 个</li></ul></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Go</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
   
 </search>
