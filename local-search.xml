@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>JS中闭包产生的内存泄漏</title>
+    <link href="/2023/12/13/JS%E4%B8%AD%E9%97%AD%E5%8C%85%E4%BA%A7%E7%94%9F%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"/>
+    <url>/2023/12/13/JS%E4%B8%AD%E9%97%AD%E5%8C%85%E4%BA%A7%E7%94%9F%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<p><img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/blog/%E9%97%AD%E5%8C%85.png" alt="闭包"></p><p>函数对象中的 ParentScope 为 AO，那么当 FEC 被销毁后，FEC中的 VO 引用的 AO 对象并不会被 GC 掉，GO 依然可以间接的找到 AO 对象，这时就会造成内存泄漏。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JS中的作用域提升</title>
     <link href="/2023/12/12/JS%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%90%E5%8D%87/"/>
     <url>/2023/12/12/JS%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%90%E5%8D%87/</url>
