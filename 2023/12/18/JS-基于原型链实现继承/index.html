@@ -16,24 +16,22 @@
   <meta name="author" content="Zhang HaoYu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="函数对象中的 ParentScope 为 AO，那么当 FEC 被销毁后，FEC中的 VO 引用的 AO 对象并不会被 GC 掉，GO 依然可以间接的找到 AO 对象，这时就会造成内存泄漏。">
+    <meta name="description" content="使用寄生组合的方式实现继承 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748&#x2F;&#x2F; 寄生组合式继承function createObject(o) &amp;#123;  function Fn() &amp;#123;&amp;#125;  Fn.prototype &#x3D; o  return new">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS中闭包产生的内存泄漏">
-<meta property="og:url" content="http://example.com/2023/12/13/JS%E4%B8%AD%E9%97%AD%E5%8C%85%E4%BA%A7%E7%94%9F%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/index.html">
+<meta property="og:title" content="JS-基于原型链实现继承">
+<meta property="og:url" content="http://example.com/2023/12/18/JS-%E5%9F%BA%E4%BA%8E%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF/index.html">
 <meta property="og:site_name" content="Zhang HaoYu&#39;Blog">
-<meta property="og:description" content="函数对象中的 ParentScope 为 AO，那么当 FEC 被销毁后，FEC中的 VO 引用的 AO 对象并不会被 GC 掉，GO 依然可以间接的找到 AO 对象，这时就会造成内存泄漏。">
+<meta property="og:description" content="使用寄生组合的方式实现继承 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748&#x2F;&#x2F; 寄生组合式继承function createObject(o) &amp;#123;  function Fn() &amp;#123;&amp;#125;  Fn.prototype &#x3D; o  return new">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/blog/%E9%97%AD%E5%8C%85.png">
-<meta property="article:published_time" content="2023-12-13T08:34:19.000Z">
-<meta property="article:modified_time" content="2023-12-13T08:39:23.919Z">
+<meta property="article:published_time" content="2023-12-18T05:38:15.000Z">
+<meta property="article:modified_time" content="2023-12-18T05:39:08.935Z">
 <meta property="article:author" content="Zhang HaoYu">
-<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/blog/%E9%97%AD%E5%8C%85.png">
   
   
   
-  <title>JS中闭包产生的内存泄漏 - Zhang HaoYu&#39;Blog</title>
+  <title>JS-基于原型链实现继承 - Zhang HaoYu&#39;Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +236,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JS中闭包产生的内存泄漏"></span>
+            <span id="subtitle" data-typed-text="JS-基于原型链实现继承"></span>
           
         </div>
 
@@ -249,8 +247,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-13 16:34" pubdate>
-          2023年12月13日 下午
+        <time datetime="2023-12-18 13:38" pubdate>
+          2023年12月18日 下午
         </time>
       </span>
     
@@ -261,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          81 字
+          1.1k 字
         
       </span>
     
@@ -272,7 +270,7 @@
         
         
         
-          1 分钟
+          9 分钟
         
       </span>
     
@@ -309,13 +307,14 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JS中闭包产生的内存泄漏</h1>
+            <h1 id="seo-header">JS-基于原型链实现继承</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/blog/%E9%97%AD%E5%8C%85.png" srcset="/img/loading.gif" lazyload alt="闭包"></p>
-<p>函数对象中的 ParentScope 为 AO，那么当 FEC 被销毁后，FEC中的 VO 引用的 AO 对象并不会被 GC 掉，GO 依然可以间接的找到 AO 对象，这时就会造成内存泄漏。</p>
+                <p>使用寄生组合的方式实现继承</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 寄生组合式继承</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">createObject</span>(<span class="hljs-params">o</span>) &#123;<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">Fn</span>(<span class="hljs-params"></span>) &#123;&#125;<br>  <span class="hljs-title class_">Fn</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = o<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Fn</span>()<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">inheritPrototype</span>(<span class="hljs-params">subType, superType</span>) &#123;<br>  subType.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = <span class="hljs-title function_">createObject</span>(superType.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>)<br>  <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(subType.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>, <span class="hljs-string">&quot;constructor&quot;</span>, &#123;<br>    <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>,<br>    <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-attr">value</span>: subType<br>  &#125;)<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params">name, age, friends</span>) &#123;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">friends</span> = friends<br>&#125;<br><br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">running</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;running~&quot;</span>)<br>&#125;<br><br><span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">eating</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;eating~&quot;</span>)<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">Student</span>(<span class="hljs-params">name, age, friends, sno, score</span>) &#123;<br>  <span class="hljs-title class_">Person</span>.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">this</span>, name, age, friends)<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">sno</span> = sno<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">score</span> = score<br>&#125;<br><br><span class="hljs-title function_">inheritPrototype</span>(<span class="hljs-title class_">Student</span>, <span class="hljs-title class_">Person</span>)<br><br><span class="hljs-title class_">Student</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">studying</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;studying~&quot;</span>)<br>&#125;<br><br><span class="hljs-keyword">var</span> stu = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&quot;zhy&quot;</span>, <span class="hljs-number">18</span>, [<span class="hljs-string">&quot;kobe&quot;</span>], <span class="hljs-string">&quot;007&quot;</span>, <span class="hljs-number">100</span>)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(stu)<br>stu.<span class="hljs-title function_">studying</span>()<br>stu.<span class="hljs-title function_">eating</span>()<br>stu.<span class="hljs-title function_">running</span>()<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -328,7 +327,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
+        <a href="/tags/javascript/" class="print-no-link">#javascript</a>
       
     </div>
   
@@ -340,8 +339,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JS中闭包产生的内存泄漏</div>
-      <div>http://example.com/2023/12/13/JS中闭包产生的内存泄漏/</div>
+      <div>JS-基于原型链实现继承</div>
+      <div>http://example.com/2023/12/18/JS-基于原型链实现继承/</div>
     </div>
     <div class="license-meta">
       
@@ -353,7 +352,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月13日</div>
+          <div>2023年12月18日</div>
         </div>
       
       
@@ -385,18 +384,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/18/JS-%E5%9F%BA%E4%BA%8E%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF/" title="JS-基于原型链实现继承">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JS-基于原型链实现继承</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/12/JS%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%90%E5%8D%87/" title="JS中的作用域提升">
-                        <span class="hidden-mobile">JS中的作用域提升</span>
+                      <a href="/2023/12/13/JS%E4%B8%AD%E9%97%AD%E5%8C%85%E4%BA%A7%E7%94%9F%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/" title="JS中闭包产生的内存泄漏">
+                        <span class="hidden-mobile">JS中闭包产生的内存泄漏</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
