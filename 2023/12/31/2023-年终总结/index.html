@@ -16,23 +16,22 @@
   <meta name="author" content="Zhang HaoYu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647var _e; &#x2F;&#x2F; 使用 _e 接收一下!(function(t) &amp;#123;  var i &#x3D; &amp;#123;&amp;#125;  function e(s) &amp;#123;    if (i[s]) return i[s].expo">
+    <meta name="description" content="坦白讲，要不是无聊到爆，我也不会写这一篇年终总结的。毕竟，我这一年似乎也没有什么值得写的。既然开笔了，就写到最后吧。 实话说，我已经记不起自己今年 1 月份的时候干过些什么了，不过好在有 wechat message history 可以翻。1 月份，当时我正在参加字节的青训营，至于这段记忆为什么会遗失？一来那是上大学之后的第一个假期，根本无暇学习；二来自己技术 low 到爆，直接上手项目整个人都">
 <meta property="og:type" content="article">
-<meta property="og:title" content="爬虫--webpack模块导出理解">
-<meta property="og:url" content="http://example.com/2023/12/25/%E7%88%AC%E8%99%AB-webpack%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%87%BA%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:title" content="2023-年终总结">
+<meta property="og:url" content="http://example.com/2023/12/31/2023-%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Zhang HaoYu&#39;Blog">
-<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647var _e; &#x2F;&#x2F; 使用 _e 接收一下!(function(t) &amp;#123;  var i &#x3D; &amp;#123;&amp;#125;  function e(s) &amp;#123;    if (i[s]) return i[s].expo">
+<meta property="og:description" content="坦白讲，要不是无聊到爆，我也不会写这一篇年终总结的。毕竟，我这一年似乎也没有什么值得写的。既然开笔了，就写到最后吧。 实话说，我已经记不起自己今年 1 月份的时候干过些什么了，不过好在有 wechat message history 可以翻。1 月份，当时我正在参加字节的青训营，至于这段记忆为什么会遗失？一来那是上大学之后的第一个假期，根本无暇学习；二来自己技术 low 到爆，直接上手项目整个人都">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-24T17:13:33.000Z">
-<meta property="article:modified_time" content="2023-12-24T17:13:57.961Z">
+<meta property="article:published_time" content="2023-12-31T11:33:12.000Z">
+<meta property="article:modified_time" content="2023-12-31T11:33:48.923Z">
 <meta property="article:author" content="Zhang HaoYu">
-<meta property="article:tag" content="spider">
-<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="2023">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>爬虫--webpack模块导出理解 - Zhang HaoYu&#39;Blog</title>
+  <title>2023-年终总结 - Zhang HaoYu&#39;Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -237,7 +236,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="爬虫--webpack模块导出理解"></span>
+            <span id="subtitle" data-typed-text="2023-年终总结"></span>
           
         </div>
 
@@ -248,8 +247,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-25 01:13" pubdate>
-          2023年12月25日 凌晨
+        <time datetime="2023-12-31 19:33" pubdate>
+          2023年12月31日 晚上
         </time>
       </span>
     
@@ -260,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.2k 字
         
       </span>
     
@@ -271,7 +270,7 @@
         
         
         
-          9 分钟
+          10 分钟
         
       </span>
     
@@ -308,13 +307,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">爬虫--webpack模块导出理解</h1>
+            <h1 id="seo-header">2023-年终总结</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> _e; <span class="hljs-comment">// 使用 _e 接收一下</span><br><br>!(<span class="hljs-keyword">function</span>(<span class="hljs-params">t</span>) &#123;<br>  <span class="hljs-keyword">var</span> i = &#123;&#125;<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">e</span>(<span class="hljs-params">s</span>) &#123;<br>    <span class="hljs-keyword">if</span> (i[s]) <span class="hljs-keyword">return</span> i[s].<span class="hljs-property">exports</span>;  <span class="hljs-comment">// 如果 i 里面有就直接返回</span><br><br>    <span class="hljs-keyword">var</span> n = (i[s] = &#123;<br>      <span class="hljs-attr">exports</span>: &#123;&#125;,<br>      <span class="hljs-attr">id</span>: s,<br>      <span class="hljs-attr">loaded</span>: !<span class="hljs-number">1</span><br>    &#125;)<br><br>    <span class="hljs-comment">// 使用 call 方法调用模块，this 是 n.exports(导出内容), 返回导出内容</span><br>    <span class="hljs-keyword">return</span> t[s].<span class="hljs-title function_">call</span>(n.<span class="hljs-property">exports</span>, n, n.<span class="hljs-property">exports</span>, e), (n.<span class="hljs-property">loaded</span> = !<span class="hljs-number">0</span>), n.<span class="hljs-property">exports</span><br>  &#125;<br><br>  _e = e;<br>&#125;)(&#123;<br>  <span class="hljs-number">111</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">e, t, r</span>) &#123;<br>    e.<span class="hljs-property">exports</span> = user<br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">user</span>(<span class="hljs-params">name, age, height</span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">height</span> = height<br>    &#125;<br><br>    user.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">eating</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> + <span class="hljs-string">&quot; eating~&quot;</span>)<br>    &#125;<br><br>    user.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">sleeping</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> + <span class="hljs-string">&quot; sleeping~&quot;</span>)<br>    &#125;<br><br>    user.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">printUserInfo</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`the people name is <span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.name&#125;</span>, height is <span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.height&#125;</span>, age is <span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.age&#125;</span>`</span>)<br>    &#125;<br>  &#125;<br>&#125;)<br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">User</span> = <span class="hljs-title function_">_e</span>(<span class="hljs-number">111</span>)<br><br><span class="hljs-keyword">const</span> u1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>(<span class="hljs-string">&quot;zhyclouds&quot;</span>, <span class="hljs-number">19</span>, <span class="hljs-number">1.73</span>)<br>u1.<span class="hljs-title function_">printUserInfo</span>()  <span class="hljs-comment">// the people name is zhyclouds, height is 1.73, age is 19</span><br>u1.<span class="hljs-title function_">eating</span>() <span class="hljs-comment">// zhyclouds eating~</span><br>u1.<span class="hljs-title function_">sleeping</span>() <span class="hljs-comment">// zhyclouds sleeping~</span><br></code></pre></td></tr></table></figure>
-
+                <p>坦白讲，要不是无聊到爆，我也不会写这一篇年终总结的。毕竟，我这一年似乎也没有什么值得写的。既然开笔了，就写到最后吧。</p>
+<p>实话说，我已经记不起自己今年 1 月份的时候干过些什么了，不过好在有 wechat message history 可以翻。1 月份，当时我正在参加字节的青训营，至于这段记忆为什么会遗失？一来那是上大学之后的第一个假期，根本无暇学习；二来自己技术 low 到爆，直接上手项目整个人都懵逼了。不过那段经历也带给我很多东西，在这里就要对我当时的队长表达一下歉意了，能力不够所以有些东西也没有完完整整的完成。</p>
+<p>题外话：回头再看自己一年前的聊天记录的时候，觉得自己当时跟个小屁孩一样，很sb…</p>
+<p>2 月份，准备期末考。由于疫情原因所以导致期末考推迟到了开学后，那一次考完之后我就转专业到了信管。额…实话说，我觉得当时做的转到这个专业的决定还是挺正确的。不翻聊天记录，我已经忘了当时我还学过经济学这门学科（手动doge）。</p>
+<p>3 月份，学爬虫。其实之前就已经学过一点点爬虫和 JS 逆向的东西了，但是 Python 自己学的也不是很精进，所以这个月就开始系统的去学了一些 Python 的面向对象、迭代器、生成器、异步、进程线程等等，然后还有 JS 逆向的一些东西，加解密啊、webpack 模块啊等等，中间顺带着写了一个小工具用来做学校规定的我爱记单词，一直优化到从三四十分到最后的满分的程度。</p>
+<p>4 月份，还是在学爬虫和 JS 逆向的内容，同时也了解了解了 Scrapy，当然 4 月份的主题肯定不是爬虫了。这个时候我开始刻意的去关注 AI 领域的一些内容。其实我是从 22 年的 12 月份就注册使用了 ChatGPT，但是大一嘛，没什么商业头脑，当时只是觉得这是一个很 nb 的大模型，其它的也没有注意到，直到 4 月份火起来的时候才后知后觉。然后就是参加了一次社团的团建。这个月最后的最后，就是在学校的校园帖上面看到了一条爬小红书数据 1w 条的帖子，我 get 到了 400 块。</p>
+<p>5 月份，和我哥一起写了个通讯协议，当时第一次近距离接触嵌入式领域。然后我接触了 midjourney。接着就是爬了一家培训机构的课程，那家的视频加密用的是保利威，当时解了好久才解开。然后就是阳了，首阳。20 号阳的，23号就去了南京，没有味觉的体验了一次南京的美食。</p>
+<p>6 月份，搭了一个 GPT 的镜像站，当时用的是免费额度的 API，后来在里面充了 5 美刀。然后就是期末考、放假。中间又参加了一次字节青训营，刚好还是后端，不过一个队就我和另外一个人在干事情。</p>
+<p>7 月份，开始玩 stable diffusion，学数据结构和算法题，不过假期么，也没坚持多久。</p>
+<p>8 月份，接了个私活，切身体会到甲方爸爸和乙方孙子的感觉。</p>
+<p>9 月份，重拾 Go。</p>
+<p>10 月份，搭集群；重新整理了一下自己的 windows 系统。</p>
+<p>11 - 12 月底，主题是前端，pubg，瓦…</p>
+<p>怎么说，后半年没怎么干事情就过没了… 这一年过的tmd快</p>
 
                 
               </div>
@@ -327,9 +338,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/spider/" class="print-no-link">#spider</a>
-      
-        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
+        <a href="/tags/2023/" class="print-no-link">#2023</a>
       
     </div>
   
@@ -341,8 +350,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>爬虫--webpack模块导出理解</div>
-      <div>http://example.com/2023/12/25/爬虫-webpack模块导出理解/</div>
+      <div>2023-年终总结</div>
+      <div>http://example.com/2023/12/31/2023-年终总结/</div>
     </div>
     <div class="license-meta">
       
@@ -354,7 +363,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月25日</div>
+          <div>2023年12月31日</div>
         </div>
       
       
@@ -386,18 +395,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/31/2023-%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" title="2023-年终总结">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2023-年终总结</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/19/Vue3%E5%92%8CVue2%E5%93%8D%E5%BA%94%E5%BC%8F%E5%AE%9E%E7%8E%B0/" title="Vue3和Vue2响应式实现">
-                        <span class="hidden-mobile">Vue3和Vue2响应式实现</span>
+                      <a href="/2023/12/25/%E7%88%AC%E8%99%AB-webpack%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%87%BA%E7%90%86%E8%A7%A3/" title="爬虫--webpack模块导出理解">
+                        <span class="hidden-mobile">爬虫--webpack模块导出理解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
