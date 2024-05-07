@@ -16,22 +16,22 @@
   <meta name="author" content="Zhang HaoYu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="设计原则 开闭原则（OCP） 单一职责原则（SRP） 里氏替换原则（LSP） 依赖倒置原则（DIP） 接口隔离原则（ISP） 迪米特法则（LOD） 合成复用原则（CARP）  1. 开闭原则（OCP）对扩展开放，对修改关闭。 场景： 要实现一个购买手机的功能，需要定义一个手机接口，这个手机接口实现了两个方法：GetName 和 GetPrice，获取手机价格和手机名称，定义一个 HuaWei 类实">
+    <meta name="description" content="编译过程以GCC工具链为例 123456#include &lt;stdio.h&gt;int main(int argc, char const *argv[])&amp;#123;    printf(&quot;hello world\n&quot;);    return 0;&amp;#125;  使用命令: gcc HelloWorld.c -o HelloWorld gcc 只是起到一个驱动作用，会">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计原则-go语言">
-<meta property="og:url" content="http://example.com/2024/05/04/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-go%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:title" content="helloWorld是如何在计算机里面执行的">
+<meta property="og:url" content="http://example.com/2024/05/07/helloWorld%E6%98%AF%E5%A6%82%E4%BD%95%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%87%8C%E9%9D%A2%E6%89%A7%E8%A1%8C%E7%9A%84/index.html">
 <meta property="og:site_name" content="Zhang HaoYu&#39;Blog">
-<meta property="og:description" content="设计原则 开闭原则（OCP） 单一职责原则（SRP） 里氏替换原则（LSP） 依赖倒置原则（DIP） 接口隔离原则（ISP） 迪米特法则（LOD） 合成复用原则（CARP）  1. 开闭原则（OCP）对扩展开放，对修改关闭。 场景： 要实现一个购买手机的功能，需要定义一个手机接口，这个手机接口实现了两个方法：GetName 和 GetPrice，获取手机价格和手机名称，定义一个 HuaWei 类实">
+<meta property="og:description" content="编译过程以GCC工具链为例 123456#include &lt;stdio.h&gt;int main(int argc, char const *argv[])&amp;#123;    printf(&quot;hello world\n&quot;);    return 0;&amp;#125;  使用命令: gcc HelloWorld.c -o HelloWorld gcc 只是起到一个驱动作用，会">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-04T09:57:37.000Z">
-<meta property="article:modified_time" content="2024-05-04T09:58:19.867Z">
+<meta property="article:published_time" content="2024-05-07T06:36:24.000Z">
+<meta property="article:modified_time" content="2024-05-07T06:37:50.263Z">
 <meta property="article:author" content="Zhang HaoYu">
-<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>设计原则-go语言 - Zhang HaoYu&#39;Blog</title>
+  <title>helloWorld是如何在计算机里面执行的 - Zhang HaoYu&#39;Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -236,7 +236,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="设计原则-go语言"></span>
+            <span id="subtitle" data-typed-text="helloWorld是如何在计算机里面执行的"></span>
           
         </div>
 
@@ -247,8 +247,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-04 17:57" pubdate>
-          2024年5月4日 下午
+        <time datetime="2024-05-07 14:36" pubdate>
+          2024年5月7日 下午
         </time>
       </span>
     
@@ -259,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          366 字
         
       </span>
     
@@ -270,7 +270,7 @@
         
         
         
-          18 分钟
+          4 分钟
         
       </span>
     
@@ -307,69 +307,38 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">设计原则-go语言</h1>
+            <h1 id="seo-header">helloWorld是如何在计算机里面执行的</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h1><ul>
-<li>开闭原则（OCP）</li>
-<li>单一职责原则（SRP）</li>
-<li>里氏替换原则（LSP）</li>
-<li>依赖倒置原则（DIP）</li>
-<li>接口隔离原则（ISP）</li>
-<li>迪米特法则（LOD）</li>
-<li>合成复用原则（CARP）</li>
-</ul>
-<h2 id="1-开闭原则（OCP）"><a href="#1-开闭原则（OCP）" class="headerlink" title="1. 开闭原则（OCP）"></a>1. 开闭原则（OCP）</h2><p><strong>对扩展开放，对修改关闭。</strong></p>
-<p>场景： 要实现一个购买手机的功能，需要定义一个手机接口，这个手机接口实现了两个方法：GetName 和 GetPrice，获取手机价格和手机名称，定义一个 HuaWei 类实现这个接口。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> Phone <span class="hljs-keyword">interface</span> &#123;<br>    GetName() <span class="hljs-type">string</span><br>    GetPrice() <span class="hljs-type">int64</span><br>&#125;<br><br><span class="hljs-keyword">type</span> HuaWei <span class="hljs-keyword">struct</span> &#123;<br>    name <span class="hljs-type">string</span><br>    price <span class="hljs-type">int64</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *Huawei)</span></span> GetName() <span class="hljs-type">string</span> &#123;<br>    <span class="hljs-keyword">return</span> p.name<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *Huawei)</span></span> GetPrice() <span class="hljs-type">int64</span> &#123;<br>    <span class="hljs-keyword">return</span> p.price<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h2 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h2><p>以GCC工具链为例</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span><br>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello world\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>需求： 马上618大促，华为手机参与抖音活动，满100减20，如何设计代码？</p>
-<p>你可能会有如下解决思路：</p>
-<ol>
-<li>对 HuaWei 类的 GetPrice 方法进行修改，计算满减后的价格直接返回。简单但是会影响其他平台的获取价格功能，影响未参加满减活动或者参加了其他规则的满减活动的平台的价格</li>
-<li>修改 Phone 接口，增加一个方法 GetTikTokPrice，返回满减价格。不会影响其他平台的价格但是接口和实现类都要进行修改，失去了接口的契约性（接口要保证是稳定的而不应该是频繁修改的）</li>
-<li>为 HuaWei 类直接实现一个 GetTikTokPrice 方法而不修改接口，这样接口就失去了存在的意义</li>
-</ol>
-<p>但是，最好的解决办法是<strong>新定义一个子类，让这个子类继承 HuaWei 类，重写 GetPrice 方法</strong>。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> TikTokHuaWei <span class="hljs-keyword">struct</span> &#123;<br>    HuaWei<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(p *TikTokHuaWei)</span></span> GetPrice() <span class="hljs-type">int64</span> &#123;<br>    price := p.price - p.price / <span class="hljs-number">100</span> * <span class="hljs-number">20</span><br>    <span class="hljs-keyword">return</span> price<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>总结： <strong>通过扩展子类的形式来实现多变的需求，而不去改动现有的模块实现</strong>。</p>
-<h2 id="2-单一职责原则（SRP）"><a href="#2-单一职责原则（SRP）" class="headerlink" title="2. 单一职责原则（SRP）"></a>2. 单一职责原则（SRP）</h2><p>设计类、接口、方法的时候做到功能单一，权责明确，引起类变化的原因应该只有一个。</p>
-<p>这个原则的核心就是<strong>高内聚，低耦合</strong>，如果某个模块承担的功能过多，就相当于这些功能耦合在一起，修改某一个功能的时候也会影响其他功能的实现。</p>
-<p>最重要的就是职责如何划分？从小往大说，需要考虑的是：</p>
-<ol>
-<li>方法的划分</li>
-<li>类的划分</li>
-<li>层次的划分（代码功能层）</li>
-<li>服务的划分（微服务中的服务拆分）</li>
-</ol>
-<p>例子：</p>
+<p>使用命令: <code>gcc HelloWorld.c -o HelloWorld</code></p>
+<p>gcc 只是起到一个驱动作用，会根据编译流程分别执行：</p>
 <ul>
-<li>子类A 和 子类B 同时继承父类，A 和 B 能够做到独立的业务逻辑，同时又都继承相同的父类，达到了高内聚低耦合的效果</li>
-<li>后端代码结构分层：controller -&gt; service -&gt; dao -&gt; model；前端结构分层：view -&gt; stores -&gt; services -&gt; request</li>
-<li>大体量服务将高频用户服务模块独立出来，单独为用户服务扩容，然后单独为用户服务实现多实例负载均衡。如果和其他服务模块耦合在一起会造成资源浪费，并且牵一发而动全身</li>
+<li>预处理程序（.i文件）</li>
+<li>编译程序（.s文件）</li>
+<li>汇编程序（.o文件）</li>
+<li>链接程序（可执行文件）</li>
 </ul>
-<p>总结：<strong>降低类的复杂性，做到高内聚低耦合，提高代码的可读性、可维护性</strong>。</p>
-<h2 id="3-里氏替换原则（LSP）"><a href="#3-里氏替换原则（LSP）" class="headerlink" title="3. 里氏替换原则（LSP）"></a>3. 里氏替换原则（LSP）</h2><p><strong>任何抽象类（interface接口）出现的地方都可以用他的实现类进行替换</strong>。</p>
-<p>子类需要从抽象类继承而不是具体类继承，因为从抽象类继承，子类必须要重写父类方法，这也就是多态，因此里氏替换和多态是相辅相成的。</p>
-<p>举例：用户现在需要打电话，但是不知道用户用的是什么手机，只是需要一个手机，先给一个 phone，等到关注具体品牌的时候再考虑是什么品牌的手机进行实现。</p>
-<p>总结： <strong>LSP是对OCP的补充</strong>。</p>
-<h2 id="4-依赖倒置原则（DIP）"><a href="#4-依赖倒置原则（DIP）" class="headerlink" title="4. 依赖倒置原则（DIP）"></a>4. 依赖倒置原则（DIP）</h2><p>面向接口编程，依赖于抽象的接口，不要依赖具体的实现。</p>
-<p>高层模块不应该依赖底层模块，都应该依赖于抽象的接口，接口不应该依赖于实现，实现应该依赖于抽象的接口。</p>
-<h2 id="5-接口隔离原则（ISP）"><a href="#5-接口隔离原则（ISP）" class="headerlink" title="5. 接口隔离原则（ISP）"></a>5. 接口隔离原则（ISP）</h2><p>一个接口应该只提供一个功能，而不应该把所有的操作都封装到一个接口里面去，和 SRP 相似。</p>
-<p>要求接口尽量粒度化，保持接口的纯洁性；接口要高内聚，低耦合。</p>
-<h2 id="6-迪米特法则（LOD）"><a href="#6-迪米特法则（LOD）" class="headerlink" title="6. 迪米特法则（LOD）"></a>6. 迪米特法则（LOD）</h2><p>也即最少知道原则，一个软件实体应该尽可能少的和其他实体发生依赖关系，降低类的耦合性。</p>
-<p>SRP、ISP、LOD 之间都很相似，都是为了高内聚，低耦合。</p>
-<h2 id="7-合成复用原则（CARP）"><a href="#7-合成复用原则（CARP）" class="headerlink" title="7. 合成复用原则（CARP）"></a>7. 合成复用原则（CARP）</h2><p>优先使用组合而不是继承。</p>
-<p>如果使用继承，那么对父类的修改可能就会影响到子类，但是组合不会。</p>
-<p>在 go 中，继承是通过嵌入<strong>结构体</strong>实现的，而组合是通过嵌入<strong>有名结构体字段</strong>实现的。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">type</span> A <span class="hljs-keyword">struct</span> &#123;<br>    <br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(*A)</span></span> method() <span class="hljs-type">string</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;A method&quot;</span><br>&#125;<br><br><span class="hljs-comment">// 组合</span><br><span class="hljs-keyword">type</span> B <span class="hljs-keyword">struct</span> &#123;<br>    a A<br>&#125;<br><br><span class="hljs-comment">// 继承</span><br><span class="hljs-keyword">type</span> C <span class="hljs-keyword">struct</span> &#123;<br>    A<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上设计原则都是为了实现<strong>高内聚低耦合，提高代码的可读性和可维护性</strong>这个原则。</p>
+<h2 id="程序装载执行"><a href="#程序装载执行" class="headerlink" title="程序装载执行"></a>程序装载执行</h2><p>最开始的理想模型：图灵机</p>
+<p>进一步通过冯诺依曼的体系结构将理想变成现实，其包含五大组件：</p>
+<ul>
+<li>输入设备（装载数据和程序）</li>
+<li>存储器（记住数据和程序）</li>
+<li>运算器（完成数据加工处理）</li>
+<li>控制器（控制程序执行）</li>
+<li>输出设备（显示处理结果）</li>
+</ul>
+<h2 id="将程序载入计算机进行执行"><a href="#将程序载入计算机进行执行" class="headerlink" title="将程序载入计算机进行执行"></a>将程序载入计算机进行执行</h2><p>执行文件中有：</p>
+<ul>
+<li>地址</li>
+<li>数据</li>
+<li>汇编指令</li>
+<li>注释</li>
+</ul>
 
                 
               </div>
@@ -382,7 +351,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="print-no-link">#设计模式</a>
+        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="print-no-link">#操作系统</a>
       
     </div>
   
@@ -394,8 +363,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>设计原则-go语言</div>
-      <div>http://example.com/2024/05/04/设计原则-go语言/</div>
+      <div>helloWorld是如何在计算机里面执行的</div>
+      <div>http://example.com/2024/05/07/helloWorld是如何在计算机里面执行的/</div>
     </div>
     <div class="license-meta">
       
@@ -407,7 +376,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月4日</div>
+          <div>2024年5月7日</div>
         </div>
       
       
@@ -439,9 +408,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/07/helloWorld%E6%98%AF%E5%A6%82%E4%BD%95%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%87%8C%E9%9D%A2%E6%89%A7%E8%A1%8C%E7%9A%84/" title="helloWorld是如何在计算机里面执行的">
+                      <a href="/2024/05/07/%E4%B8%80%E4%BA%9B%E9%9A%8F%E7%AC%94/" title="一些随笔">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">helloWorld是如何在计算机里面执行的</span>
+                        <span class="hidden-mobile">一些随笔</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -449,8 +418,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/25/%E7%88%AC%E8%99%AB-webpack%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%87%BA%E7%90%86%E8%A7%A3/" title="爬虫--webpack模块导出理解">
-                        <span class="hidden-mobile">爬虫--webpack模块导出理解</span>
+                      <a href="/2024/05/04/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-go%E8%AF%AD%E8%A8%80/" title="设计原则-go语言">
+                        <span class="hidden-mobile">设计原则-go语言</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

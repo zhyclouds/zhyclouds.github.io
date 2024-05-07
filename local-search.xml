@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>一些随笔</title>
+    <link href="/2024/05/07/%E4%B8%80%E4%BA%9B%E9%9A%8F%E7%AC%94/"/>
+    <url>/2024/05/07/%E4%B8%80%E4%BA%9B%E9%9A%8F%E7%AC%94/</url>
+    
+    <content type="html"><![CDATA[<h2 id="每一个艺术家都是从学徒做起的"><a href="#每一个艺术家都是从学徒做起的" class="headerlink" title="每一个艺术家都是从学徒做起的"></a>每一个艺术家都是从学徒做起的</h2><ul><li>通读官方文档</li><li>官方blog（一些大佬的思考和最新的东西）</li><li>不要去网上搜一些特别智障的问题，官方文档里面一般其实都有解决方案的</li><li>读一些源码实现、底层实现</li><li>总结、形成自己的知识体系</li></ul><h2 id="有效的思考"><a href="#有效的思考" class="headerlink" title="有效的思考"></a>有效的思考</h2><p>无论是CRUD还是做架构，其实都是一个演进的过程，在这个过程中需要不断的去思考、去看一些方法论为什么是这样的…</p><p>比如</p><ul><li>错误码如何设计？</li><li>为什么是三层架构、DDD？</li><li>如何更好的对代码进行抽象？</li><li>有没有一些工具或者方法能够提高我的效率？</li><li>…</li></ul><h2 id="实践、踩坑、重视、反思、改进"><a href="#实践、踩坑、重视、反思、改进" class="headerlink" title="实践、踩坑、重视、反思、改进"></a>实践、踩坑、重视、反思、改进</h2><p>先看别人怎么做（思考从国内到国外所有公司的架构设计），看别人的演进过程，再结合自己的实际体量，进行设计（恰到好处的设计）</p><p>这样就可以知道什么能做、什么不能做、未来出现一些情况问题如何去解决</p><p>做一个合理的设计</p><h2 id="机会和选择"><a href="#机会和选择" class="headerlink" title="机会和选择"></a>机会和选择</h2><p>大厂螺丝钉还是小厂中坚力量？</p><p>公司是不是创业型的？企业能否高速增长？如何和企业一起成长？</p><h2 id="一万小时定律"><a href="#一万小时定律" class="headerlink" title="一万小时定律"></a>一万小时定律</h2><p>不断积累、不断总结</p><h2 id="团队管理-向上管理"><a href="#团队管理-向上管理" class="headerlink" title="团队管理 + 向上管理"></a>团队管理 + 向上管理</h2><p>带一个小团队</p><p>讲话讲不清楚，如何向上汇报业务？</p><ul><li>不会看数据</li><li>不会做总结</li><li>用一两句话把重点讲出来</li></ul><h2 id="自我认知和修行"><a href="#自我认知和修行" class="headerlink" title="自我认知和修行"></a>自我认知和修行</h2><p>对自己的性格有一个认识，认识到哪些地方是好的，哪些是不好的，尽可能不要感情用事</p><p>持续学习，投资自己永远是值得的</p><p>乐于分享、多和人交流，但同时也要内敛，不要过于张扬</p><h1 id="核心G0技能"><a href="#核心G0技能" class="headerlink" title="核心G0技能"></a>核心G0技能</h1><ul><li>Go 最关键的几个特性：goroutine、channel、error、context</li><li>Runtime 中核心类型：chan、slice、map</li><li>Go toolchain</li><li>内存模型</li><li>并发语义</li><li>网络开发</li><li>大规模项目的工程化实践</li><li>Kernel 综合知识对工程师代码的反向要求</li></ul><h2 id="构建Go语言知识体系"><a href="#构建Go语言知识体系" class="headerlink" title="构建Go语言知识体系"></a>构建Go语言知识体系</h2><ul><li>系统性的阅读官方文档</li><li>系统性的阅读官方类库</li><li>阅读大量优秀开源项目</li><li>持续实践并改进（应该自己去阅读代码，而不是听别人讲代码）</li><li>行业内的优秀的文章（大佬）</li><li>知识的组织关联</li></ul><h2 id="时间管理"><a href="#时间管理" class="headerlink" title="时间管理"></a>时间管理</h2><ul><li>碎片化时间（看看文章）</li><li>完整时间（系统的学习）</li><li>工作时间</li><li>业余时间</li></ul><h2 id="信息获取"><a href="#信息获取" class="headerlink" title="信息获取"></a>信息获取</h2><ul><li>微信群</li><li>公众号 + 收藏 + Tag</li><li>买几本好书</li><li>Paper（VLDB、sigmod等）</li><li>MIT之类的视频</li><li>Meetup + 大会</li><li>啤酒烧烤（高级点叫喝茶）</li></ul><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li>OneNote</li><li>MarginNote3</li><li>Omni Graffle</li></ul><p>先看原理，再看原理（在某个你感兴趣的点上，不用所有的细节都看）</p><p>花 20% 的时间学 80% 的内容</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>个人成长</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>helloWorld是如何在计算机里面执行的</title>
+    <link href="/2024/05/07/helloWorld%E6%98%AF%E5%A6%82%E4%BD%95%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%87%8C%E9%9D%A2%E6%89%A7%E8%A1%8C%E7%9A%84/"/>
+    <url>/2024/05/07/helloWorld%E6%98%AF%E5%A6%82%E4%BD%95%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%87%8C%E9%9D%A2%E6%89%A7%E8%A1%8C%E7%9A%84/</url>
+    
+    <content type="html"><![CDATA[<h2 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h2><p>以GCC工具链为例</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span><br>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello world\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>使用命令: <code>gcc HelloWorld.c -o HelloWorld</code></p><p>gcc 只是起到一个驱动作用，会根据编译流程分别执行：</p><ul><li>预处理程序（.i文件）</li><li>编译程序（.s文件）</li><li>汇编程序（.o文件）</li><li>链接程序（可执行文件）</li></ul><h2 id="程序装载执行"><a href="#程序装载执行" class="headerlink" title="程序装载执行"></a>程序装载执行</h2><p>最开始的理想模型：图灵机</p><p>进一步通过冯诺依曼的体系结构将理想变成现实，其包含五大组件：</p><ul><li>输入设备（装载数据和程序）</li><li>存储器（记住数据和程序）</li><li>运算器（完成数据加工处理）</li><li>控制器（控制程序执行）</li><li>输出设备（显示处理结果）</li></ul><h2 id="将程序载入计算机进行执行"><a href="#将程序载入计算机进行执行" class="headerlink" title="将程序载入计算机进行执行"></a>将程序载入计算机进行执行</h2><p>执行文件中有：</p><ul><li>地址</li><li>数据</li><li>汇编指令</li><li>注释</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>操作系统</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>设计原则-go语言</title>
     <link href="/2024/05/04/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-go%E8%AF%AD%E8%A8%80/"/>
     <url>/2024/05/04/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99-go%E8%AF%AD%E8%A8%80/</url>
