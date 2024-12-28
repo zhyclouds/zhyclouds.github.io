@@ -16,17 +16,22 @@
   <meta name="author" content="Zhang HaoYu">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="标签 - Vue">
-<meta property="og:url" content="http://example.com/tags/Vue/index.html">
+    <meta name="description" content="什么是闭包？闭包有什么缺陷？  定义： 一个方法能带上下文 缺陷：  加剧内存逃逸（分配到堆上，需要 GC，比较耗性能） 可读性比较差（因人而异）   什么情况下会出现栈溢出？  无限循环、递归调用…  什么是不定参数？调用方法的时候，不定参数可以传入 0 个值吗？方法内部怎么使用不定参数？  当成切片用  什么是 defer？  在程序返回前执行一段代码  一个方法内部的 defer 能不能超">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Go基础回顾">
+<meta property="og:url" content="http://example.com/draft/Go%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE.html">
 <meta property="og:site_name" content="Zhang HaoYu&#39;Blog">
+<meta property="og:description" content="什么是闭包？闭包有什么缺陷？  定义： 一个方法能带上下文 缺陷：  加剧内存逃逸（分配到堆上，需要 GC，比较耗性能） 可读性比较差（因人而异）   什么情况下会出现栈溢出？  无限循环、递归调用…  什么是不定参数？调用方法的时候，不定参数可以传入 0 个值吗？方法内部怎么使用不定参数？  当成切片用  什么是 defer？  在程序返回前执行一段代码  一个方法内部的 defer 能不能超">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-31T15:33:45.000Z">
+<meta property="article:modified_time" content="2023-11-01T04:11:07.275Z">
 <meta property="article:author" content="Zhang HaoYu">
+<meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>标签 - Vue - Zhang HaoYu&#39;Blog</title>
+  <title>Go基础回顾 - Zhang HaoYu&#39;Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -107,7 +112,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 80vh;">
+<div class="header-inner" style="height: 60vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -225,17 +230,13 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="标签 - Vue"></span>
+            <span id="subtitle" data-typed-text="Go基础回顾"></span>
           
         </div>
 
         
       </div>
 
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
       
     </div>
   </div>
@@ -256,23 +257,68 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 1 篇文章</p>
-  <hr>
-  
-  
-    
-      
-      <p class="h5">2023</p>
-    
-    <a href="/2023/12/19/Vue3%E5%92%8CVue2%E5%93%8D%E5%BA%94%E5%BC%8F%E5%AE%9E%E7%8E%B0/" class="list-group-item list-group-item-action">
-      <time>12-19</time>
-      <div class="list-group-item-title">Vue3和Vue2响应式实现</div>
-    </a>
-  
-</div>
+<article class="page-content">
+  <blockquote>
+<p>什么是闭包？闭包有什么缺陷？</p>
+</blockquote>
+<p>定义：</p>
+<p>一个方法能带上下文</p>
+<p>缺陷：</p>
+<ul>
+<li>加剧内存逃逸（分配到堆上，需要 GC，比较耗性能）</li>
+<li>可读性比较差（因人而异）</li>
+</ul>
+<blockquote>
+<p>什么情况下会出现栈溢出？</p>
+</blockquote>
+<p>无限循环、递归调用…</p>
+<blockquote>
+<p>什么是不定参数？调用方法的时候，不定参数可以传入 0 个值吗？方法内部怎么使用不定参数？</p>
+</blockquote>
+<p>当成切片用</p>
+<blockquote>
+<p>什么是 defer？</p>
+</blockquote>
+<p>在程序返回前执行一段代码</p>
+<blockquote>
+<p>一个方法内部的 defer 能不能超过 8 个？</p>
+</blockquote>
+<p>可以。但是超过 8 个会换一种底层实现方式</p>
+<blockquote>
+<p>defer 内部能不能修改返回值？怎么改？</p>
+</blockquote>
+<p>能改，返回值是带名字的返回值，如果是局部变量不行</p>
+<blockquote>
+<p>数组和切片有什么区别？</p>
+</blockquote>
+<p>数组和别的语言一样，是一段固定长度的内存</p>
+<p>而切片能够看成是数组的二次封装，支持 append 等操作</p>
+<blockquote>
+<p>切片是怎么扩容的？</p>
+</blockquote>
+<p>重新分配一段连续的内存，而后把原本的数据拷贝过去</p>
+<ul>
+<li>当容量小于 256 的时候，两倍扩容（低版本是 1024 作为分界点）</li>
+<li>否则，按照 1.25 倍扩容</li>
+</ul>
+<blockquote>
+<p>defer 的实现机制？</p>
+</blockquote>
+<ul>
+<li>堆上分配：整个 defer 直接分配到堆上，缺点就是要被 GC 管理</li>
+<li>栈上分配：整个 defer 分配到了 goroutine 栈上，不需要被 GC 管理</li>
+<li>开放编码：启用内联的优化，你直观理解就是相对于把你的 defer 内容放到了你的函数最后。启用条件：<ul>
+<li>函数的 defer 数量少于或者等于 8 个</li>
+<li>函数的 defer 关键字不能在循环中执行</li>
+<li>函数的 return 语句与 defer 语句的乘积小于或者等于 15 个</li>
+</ul>
+</li>
+</ul>
 
 
+  
+
+</article>
 
 
 
