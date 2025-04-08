@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'tzy';
+    src: url('/css/ZhuZiAWan.woff2');
+    font-display: swap;
+}
+
+body {
+    font-family: tzy !important;
+}
