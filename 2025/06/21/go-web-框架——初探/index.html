@@ -1,0 +1,301 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>go web 框架——初探 | 小张的宇宙快递</title><meta name="author" content="张颢宇"><meta name="copyright" content="张颢宇"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Go Web 框架自研——初探beego 框架参考这是 beego 启动一个 web 服务的基础用法： 12345678910111213141516171819202122232425262728&#x2F;&#x2F; controller.gopackage beegoimport &quot;github.com&#x2F;beego&#x2F;beego&#x2F;v2&#x2F;server&#x2F;web&quot;type UserControll">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go web 框架——初探">
+<meta property="og:url" content="http://example.com/2025/06/21/go-web-%E6%A1%86%E6%9E%B6%E2%80%94%E2%80%94%E5%88%9D%E6%8E%A2/index.html">
+<meta property="og:site_name" content="小张的宇宙快递">
+<meta property="og:description" content="Go Web 框架自研——初探beego 框架参考这是 beego 启动一个 web 服务的基础用法： 12345678910111213141516171819202122232425262728&#x2F;&#x2F; controller.gopackage beegoimport &quot;github.com&#x2F;beego&#x2F;beego&#x2F;v2&#x2F;server&#x2F;web&quot;type UserControll">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
+<meta property="article:published_time" content="2025-06-21T14:25:48.000Z">
+<meta property="article:modified_time" content="2025-06-21T14:28:02.618Z">
+<meta property="article:author" content="张颢宇">
+<meta property="article:tag" content="go">
+<meta property="article:tag" content="web 框架">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "go web 框架——初探",
+  "url": "http://example.com/2025/06/21/go-web-%E6%A1%86%E6%9E%B6%E2%80%94%E2%80%94%E5%88%9D%E6%8E%A2/",
+  "image": "http://example.com/img/avatar.jpg",
+  "datePublished": "2025-06-21T14:25:48.000Z",
+  "dateModified": "2025-06-21T14:28:02.618Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "张颢宇",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://example.com/2025/06/21/go-web-%E6%A1%86%E6%9E%B6%E2%80%94%E2%80%94%E5%88%9D%E6%8E%A2/index.html"><link rel="preconnect"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?1db09ba0639a1743b2d5b317cd60a7d9";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: '/pluginsSrc/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'go web 框架——初探',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/my.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/background.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">小张的宇宙快递</span></a><a class="nav-page-title" href="/"><span class="site-name">go web 框架——初探</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">go web 框架——初探</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-21T14:25:48.000Z" title="发表于 2025-06-21 22:25:48">2025-06-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-21T14:28:02.618Z" title="更新于 2025-06-21 22:28:02">2025-06-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Go-Web-框架自研——初探"><a href="#Go-Web-框架自研——初探" class="headerlink" title="Go Web 框架自研——初探"></a>Go Web 框架自研——初探</h1><h2 id="beego-框架参考"><a href="#beego-框架参考" class="headerlink" title="beego 框架参考"></a>beego 框架参考</h2><p>这是 beego 启动一个 web 服务的基础用法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controller.go</span></span><br><span class="line"><span class="keyword">package</span> beego</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;github.com/beego/beego/v2/server/web&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> UserController <span class="keyword">struct</span> &#123;</span><br><span class="line">	web.Controller</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *UserController)</span></span> GetUser() &#123;</span><br><span class="line">	u.Ctx.WriteString(<span class="string">&quot;你好，我是小张&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *UserController)</span></span> CreateUser() &#123;</span><br><span class="line">	user := &amp;User&#123;&#125;</span><br><span class="line">	err := u.Ctx.BindJSON(user)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		u.Ctx.WriteString(err.Error())</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	_ = u.Ctx.JSONResp(user)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name <span class="type">string</span> <span class="string">`json:&quot;name&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controller_test.go</span></span><br><span class="line"><span class="keyword">package</span> beego</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;github.com/beego/beego/v2/server/web&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestUserController</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	web.BConfig.CopyRequestBody = <span class="literal">true</span></span><br><span class="line">	c := &amp;UserController&#123;&#125;</span><br><span class="line">	web.Router(<span class="string">&quot;/user&quot;</span>, c, <span class="string">&quot;get:GetUser&quot;</span>)</span><br><span class="line">	web.Router(<span class="string">&quot;/user/create&quot;</span>, c, <span class="string">&quot;post:CreateUser&quot;</span>)</span><br><span class="line">	web.Run(<span class="string">&quot;:8081&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，定义了一个 UserController 结构体，这个 controller 组合了 beego 的 web controller，提供了获取用户和创建用户两个方法。然后注册路由的时候把这个 controller 传了进去。</p>
+<p>也就是说，beego 是按照 MVC 模式设计的，它要求使用者在业务层面上使用 MVC 模式组织自己的代码，也就是一个业务一个 controller 这个样子。不过我个人觉得，这种设计不是很好，是否使用 MVC 应该让使用者自己选择，而不应该让框架提供者来左右。</p>
+<p>再来看一下定义 controller 的时候组合的 beego 的 web controller 定义：</p>
+<p><img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/haoyu/image-20250621212626372.png" alt="beego web controller"></p>
+<p>这里有一个 ctx 字段，它的定义是：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Context Http request context struct including BeegoInput, BeegoOutput, http.Request and http.ResponseWriter.</span></span><br><span class="line"><span class="comment">// BeegoInput and BeegoOutput provides an api to operate request and response more easily.</span></span><br><span class="line"><span class="keyword">type</span> Context <span class="keyword">struct</span> &#123;</span><br><span class="line">	Input          *BeegoInput</span><br><span class="line">	Output         *BeegoOutput</span><br><span class="line">	Request        *http.Request</span><br><span class="line">	ResponseWriter *Response</span><br><span class="line">	_xsrfToken     <span class="type">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，beego 在 ctx 里面存了请求和响应信息，以及自己的输入输出。我觉得这样有点重复了，很容易让使用者误解，为什么会有两个输入，两个输出，究竟应该使用哪个。</p>
+<p>在启动 web 服务的时候，是直接使用的 web.Run 方法，这是 beego 提供的一个默认包变量，它的定义是：</p>
+<p><img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/haoyu/image-20250621211358355.png" alt="beego server 抽象"></p>
+<p>可以看到，beego 抽象出了一个 server 层面上的结构体，这个结构体里面有一些字段，其中 LifeCycleCallbacks 也就是声明周期回调函数，用户可以控制服务启动前干些什么，启动后干些什么。Server 字段是 http 包里面的 Server 类型，可以用来启动服务。Handlers 字段的类型定义是这样的：</p>
+<p><img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/haoyu/image-20250621212145464.png" alt="controllerRegister"></p>
+<p>这里面有一个 routers 字段，它是一个 map 类型，存的是每个请求方法对应的路由树，用户注册的路由会存到这里面来。</p>
+<p>通过这些，可以看到 beego 基本上有四个抽象：</p>
+<ul>
+<li>路由（这个是最重要的）</li>
+<li>server</li>
+<li>context</li>
+<li>controller</li>
+</ul>
+<p>server 负责把其它抽象组合起来，方便使用者使用，并且负责和 go 的 http 包打交道，在 server 层面上也提供了一些声明周期回调。</p>
+<p>context 主要负责请求响应的传递，以及负责用户自定义的数据传递。</p>
+<p>路由负责匹配请求和对应的业务处理方法。</p>
+<p>controller 则负责业务处理。</p>
+<p>整体样子就是：</p>
+<img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/haoyu/%E7%BB%98%E5%9B%BE1.jpg" alt="beego 抽象" style="zoom: 13%;" />
+
+<h2 id="其它框架参考"><a href="#其它框架参考" class="headerlink" title="其它框架参考"></a>其它框架参考</h2><p>其它框架比如说 gin、iris、echo，用法上基本都相似，因为国内用 gin 也比较多嘛，所以这里以 gin 为例说明：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user_controller.go</span></span><br><span class="line"><span class="keyword">package</span> gin</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> UserController <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *UserController)</span></span> GetUser(ctx *gin.Context) &#123;</span><br><span class="line">	<span class="built_in">panic</span>(<span class="string">&quot;一些业务错误&quot;</span>)</span><br><span class="line">	ctx.String(<span class="number">200</span>, <span class="string">&quot;hello, world&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// user_controller_test.go</span></span><br><span class="line"><span class="keyword">package</span> gin</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestUserController_GetUser</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	g := gin.Default()</span><br><span class="line">	ctrl := &amp;UserController&#123;&#125;</span><br><span class="line">	g.GET(<span class="string">&quot;/user/info&quot;</span>, ctrl.GetUser)</span><br><span class="line">	g.POST(<span class="string">&quot;/user/:param&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(ctx *gin.Context)</span></span> &#123;</span><br><span class="line">		ctx.String(http.StatusOK, <span class="string">&quot;hello %s&quot;</span>, <span class="string">&quot;world&quot;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	_ = g.Run(<span class="string">&quot;:8082&quot;</span>)</span><br><span class="line"></span><br><span class="line">	http.ListenAndServe(<span class="string">&quot;:8083&quot;</span>, g)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，和 beego 不同的是 gin 没有按照 MVC 模式设计自己的代码，而是让用户在注册路由的时候，传入一个 <code>func(ctx *gin.Context)</code> 类型的函数，框架将其抽象成了<code>type HandlerFunc func(*Context)</code>。</p>
+<p>这样的好处就是用户可以选择是否使用 MVC 模式来组织自己的代码。如果用户想要使用 MVC 模式，那么只需要按照这个函数类型设计自己的方法就可以了。</p>
+<p>gin 的 Context 也和 beego 类似：</p>
+<p><img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/haoyu/image-20250621220559357.png" alt="gin context"></p>
+<p>至于 beego 的 httpServer，gin 里面是 Engine：</p>
+<p><img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/haoyu/image-20250621220724817.png" alt="gin engine"></p>
+<p>而且 gin 的 Engine，实现了 http 包里面的 Handler 接口：</p>
+<p><img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/haoyu/image-20250621220854842.png" alt="gin engine"></p>
+<p>也就意味着，我可以使用 gin 包提供的启动方法，也可以创建一个 gin 的 Engine，然后使用 http 包里面的 ListenAndServe 启动它。</p>
+<p>然后 Engine 结构体组合了 RouterGroup，其定义为：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// RouterGroup is used internally to configure router, a RouterGroup is associated with</span></span><br><span class="line"><span class="comment">// a prefix and an array of handlers (middleware).</span></span><br><span class="line"><span class="keyword">type</span> RouterGroup <span class="keyword">struct</span> &#123;</span><br><span class="line">	Handlers HandlersChain</span><br><span class="line">	basePath <span class="type">string</span></span><br><span class="line">	engine   *Engine</span><br><span class="line">	root     <span class="type">bool</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里面存在和 Engine 的一个双向引用关系，gin 可能是需要在 RouterGroup 上拿到 engine 进行一些操作。</p>
+<p>对于 gin 的路由注册：</p>
+<p><img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/haoyu/image-20250621221250864.png" alt="gin router"></p>
+<p>可以看到 gin 为不同的请求方法提供了不同的实现，不过最终都会调到 handle 方法上。这里我认为可以只提供一个 Handle 方法，不用提供 GET、POST 等这些实现，这样可以让接口尽可能的小而美。</p>
+<p>可以看到 gin 也差不多设计成了这幅样子：</p>
+<ul>
+<li>Engine</li>
+<li>路由 RouterGroup</li>
+<li>Context</li>
+<li>HandlerFunc</li>
+</ul>
+<p>和 beego 一样，只不过名字不用而已。</p>
+<img src="https://zhyclouds.oss-cn-hangzhou.aliyuncs.com/haoyu/image-20250621221841238.png" alt="gin 抽象" style="zoom:13%;" />
+
+<p>其它几个框架类似，这里就不详细说了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>可以看到这些 web 框架，基本上都是一副鬼样子，有 server、路由、context、业务处理四个抽象。</p>
+<p>server 负责和 go 的 http 包打交道，负责 web 服务的启动终止、生命周期管理，以及将路由注册、业务处理这些抽象组织在一起，方便框架者使用。</p>
+<p>context 负责数据管理，请求响应内容处理。</p>
+<p>业务处理负责组织使用者的业务代码。</p>
+<p>路由注册负责绑定号好不同的请求方法和路径对应的业务处理逻辑。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">张颢宇</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/06/21/go-web-%E6%A1%86%E6%9E%B6%E2%80%94%E2%80%94%E5%88%9D%E6%8E%A2/">http://example.com/2025/06/21/go-web-%E6%A1%86%E6%9E%B6%E2%80%94%E2%80%94%E5%88%9D%E6%8E%A2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">小张的宇宙快递</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/go/">go</a><a class="post-meta__tags" href="/tags/web-%E6%A1%86%E6%9E%B6/">web 框架</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">张颢宇</div><div class="author-info-description">好好生活</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Go-Web-%E6%A1%86%E6%9E%B6%E8%87%AA%E7%A0%94%E2%80%94%E2%80%94%E5%88%9D%E6%8E%A2"><span class="toc-number">1.</span> <span class="toc-text">Go Web 框架自研——初探</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#beego-%E6%A1%86%E6%9E%B6%E5%8F%82%E8%80%83"><span class="toc-number">1.1.</span> <span class="toc-text">beego 框架参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E6%A1%86%E6%9E%B6%E5%8F%82%E8%80%83"><span class="toc-number">1.2.</span> <span class="toc-text">其它框架参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/21/go-web-%E6%A1%86%E6%9E%B6%E2%80%94%E2%80%94%E5%88%9D%E6%8E%A2/" title="go web 框架——初探">go web 框架——初探</a><time datetime="2025-06-21T14:25:48.000Z" title="发表于 2025-06-21 22:25:48">2025-06-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By 张颢宇</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.zhyclouds.com/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'https://twikoo.zhyclouds.com/',
+      region: 'ap-shanghai',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('/pluginsSrc/twikoo/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script data-pjax defer src="/js/my.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
